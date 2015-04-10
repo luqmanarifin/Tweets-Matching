@@ -16,6 +16,13 @@ public class TwitAku {
    */
   public static void main(String[] args) {
     // TODO code application logic here
+    String text = "abacaabaccabacabaa";
+    String pattern = "abacab";
+    Algorithm solver = new Algorithm();
+    System.out.println("KMP Algo");
+    solver.matchKmp(pattern, text);
+    System.out.println("\nBoyer Moore Algo");
+    solver.matchBoyerMoore(pattern, text);
   }
   
 }

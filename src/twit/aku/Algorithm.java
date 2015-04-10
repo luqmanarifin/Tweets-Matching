@@ -11,9 +11,19 @@ import java.util.Arrays;
  * @author Luqman A. Siswanto
  */
 public class Algorithm {
+  private final int ALPHABET_SIZE = 26;
+  
+  /**
+   * Default konstruktor
+   */
+  public Algorithm() { 
+  }
+  
   /**
    * Menghitung fungsi border dari sebuah string
+   * I. S. String hanya berisi lowercase a-z
    * @param s string yang akan di-compute fungsi bordernya
+   * @return Array of integer : border function
    */
   public int[] computeKMP(String s) {
     int n = s.length();
@@ -31,12 +41,33 @@ public class Algorithm {
     System.out.println();
     return a;
   }
+  
+  /**
+   * Menghitung pre-komputasi Boyer Moore
+   * I. S. String hanya berisi lowercase a-z
+   * @param s String yang akan dihitung Boyer-Moore
+   * @return Matriks kemunculan terakhir
+   */
+  public int[][] computeBoyerMoore(String s) {
+    int[][] b = new int[s.length()][ALPHABET_SIZE];
+    for(int i = 0; i < s.length(); i++) {
+      Arrays.fill(b[i], -1);
+    }
+    for(int i = 0; i < s.length(); i++) {
+      for(int j = 0; j < ALPHABET_SIZE; j++) {
+        if(i > 0) b[i][j] = b[i - 1][j];
+      }
+      b[i][s.charAt(i) - 'a'] = i;
+    }
+    return b;
+  }
+  
   /**
    * Mencocokkan sebuah pattern terhadap text
    * @param pattern Pattern yang akan dicocokkan
    * @param text Teks mentah tempat pattern akan dicocokkan
    */
-  public void matchKMP(String pattern, String text) {
+  public void matchKmp(String pattern, String text) {
     pattern = pattern.toLowerCase();
     text = text.toLowerCase();
     int[] b = computeKMP(pattern);
@@ -52,6 +83,37 @@ public class Algorithm {
       if(j == pattern.length()) {
         System.out.println("Found at index " + (i - pattern.length()));
         return;
+      }
+    }
+    System.out.println("Not found");
+  }
+  
+  /**
+   * Mencocokkan sebuah pattern terhadap text
+   * I. S. pattern hanya berisi satu kata
+   * I. S. text hanya berisi karakter a-z atau A-Z
+   * @param pattern Pattern yang akan dicocokkan
+   * @param text Teks mentah tempat pattern akan dicocokkan
+   */
+  public void matchBoyerMoore(String pattern, String text) {
+    pattern = pattern.toLowerCase();
+    text = text.toLowerCase();
+    int[][] b = computeBoyerMoore(pattern);
+    int j = pattern.length() - 1;
+    for(int i = pattern.length() - 1; i < text.length();) {
+      if(pattern.charAt(j) == text.charAt(i)) {
+        i--; j--;
+        if(j == -1) {
+          System.out.println("Found at index " + (i + 1));
+          return;
+        }
+      } else {
+        if(b[j][text.charAt(i) - 'a'] != -1) {
+          i += pattern.length() - 1 - b[j][text.charAt(i) - 'a'];
+        } else {
+          i += pattern.length();
+        }
+        j = pattern.length() - 1;
       }
     }
     System.out.println("Not found");
