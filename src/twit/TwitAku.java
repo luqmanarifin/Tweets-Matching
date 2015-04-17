@@ -5,6 +5,10 @@
  */
 package twit;
 
+import twitter4j.*;
+import twitter4j.conf.*;
+import java.util.List;
+
 /**
  *
  * @author Luqman A. Siswanto
@@ -23,6 +27,14 @@ public class TwitAku {
     solver.matchKmp(pattern, text);
     System.out.println("\nBoyer Moore Algo");
     solver.matchBoyerMoore(pattern, text);
+    
+    TwitterConnector twit = new TwitterConnector();
+    List<Status> tweets = twit.searchKeyword(5, "Hello");
+    for (Status tweet : tweets) {
+          System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
+          String url = "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + tweet.getId();
+          System.out.println(url);
+      }
   }
   
 }
