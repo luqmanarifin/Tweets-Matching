@@ -8,18 +8,36 @@ package twit;
 import twitter4j.*;
 import twitter4j.conf.*;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
  * @author Luqman A. Siswanto
  */
 public class TwitAku {
-
+  private static ArrayList<Topic> topics = new ArrayList<Topic>();
+  
+  private static void init() {
+    /* TOPIK SPORT */
+    ArrayList<Category> categories = new ArrayList<Category>();
+    categories.add(new Category("bola"));
+    categories.add(new Category("motogp"));
+    categories.add(new Category("table tennis"));
+    topics.add(new Topic("Sport", categories));
+    // contoh cara nambahin keyword di bola
+    topics.get(0).getCategory(0).addKey("Chelsea");
+    
+    /* Tinggal tambahin topik apapun di bawah ini */
+    
+  }
+  
   /**
    * @param args the command line arguments
    */
   public static void main(String[] args) {
     // TODO code application logic here
+    init();
+    
     String text = "abacaabaccabacabaa";
     String pattern = "abacab";
     Algorithm solver = new Algorithm();
