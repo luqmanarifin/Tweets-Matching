@@ -68,7 +68,7 @@ public class Algorithm {
    * @param pattern Pattern yang akan dicocokkan
    * @param text Teks mentah tempat pattern akan dicocokkan
    */
-  public void matchKmp(String pattern, String text) {
+  public int matchKmp(String pattern, String text) {
     pattern = pattern.toLowerCase();
     text = text.toLowerCase();
     int[] b = computeKMP(pattern);
@@ -83,10 +83,11 @@ public class Algorithm {
       }
       if(j == pattern.length()) {
         System.out.println("Found at index " + (i - pattern.length()));
-        return;
+        return (i - pattern.length());
       }
     }
     System.out.println("Not found");
+    return -1;
   }
   
   /**
@@ -96,7 +97,7 @@ public class Algorithm {
    * @param pattern Pattern yang akan dicocokkan
    * @param text Teks mentah tempat pattern akan dicocokkan
    */
-  public void matchBoyerMoore(String pattern, String text) {
+  public int matchBoyerMoore(String pattern, String text) {
     pattern = pattern.toLowerCase();
     text = text.toLowerCase();
     int[][] b = computeBoyerMoore(pattern);
@@ -106,7 +107,7 @@ public class Algorithm {
         i--; j--;
         if(j == -1) {
           System.out.println("Found at index " + (i + 1));
-          return;
+          return (i+1);
         }
       } else {
         if(b[j][text.charAt(i) - 'a'] != -1) {
@@ -118,5 +119,6 @@ public class Algorithm {
       }
     }
     System.out.println("Not found");
+    return -1;
   }
 }

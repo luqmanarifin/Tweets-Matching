@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package twit;
-import java.util.ArrayList;
+import java.util.*;
+import twitter4j.*;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class Category {
   private ArrayList<String> keys;
   private String category;
+  private List<Status> tweets;
   
   public Category() {
     keys = new ArrayList<String>();
@@ -42,5 +44,13 @@ public class Category {
   }
   public int getKeysSize() {
     return keys.size();
+  }
+  
+  public List<Status> getTweets() {
+    return tweets;
+  }
+  
+  public void addTweets(Status e) {
+    tweets.add(e);
   }
 }

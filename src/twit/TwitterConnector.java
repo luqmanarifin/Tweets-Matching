@@ -23,14 +23,7 @@ public class TwitterConnector {
    */
   public TwitterConnector() {
     ConfigurationBuilder cb = new ConfigurationBuilder();
-    // devina
-    /*
-    cb.setDebugEnabled(true)
-      .setOAuthConsumerKey("lrKsDayVG1ZiwzF7DB4W61aAe")
-      .setOAuthConsumerSecret("VUpnh7yO78xxybxZy5aAciqLXG6AOIYlEhtC3RSd6Tm0GXN2l4")
-      .setOAuthAccessToken("356761119-u2CK51Z3T9EZxKe3NyYNPIfJwGU6Z07Dwr6E5YQS")
-      .setOAuthAccessTokenSecret("oVRZMwFOIYV7Dzz0SFEgInVKQJr7jEi5DSnv0GDFVJI9t"); */
-    // luqman
+    
     cb.setDebugEnabled(true)
       .setOAuthConsumerKey("EGisMj2osHyIrjSzFAOez9xPh")
       .setOAuthConsumerSecret("NvuqjYKYxUiYonAYbnnYLk3gJanf229nmAGXhV3YBsJewx2JJa")
