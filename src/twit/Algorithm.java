@@ -82,11 +82,9 @@ public class Algorithm {
         i++;
       }
       if(j == pattern.length()) {
-        System.out.println("Found at index " + (i - pattern.length()));
-        return (i - pattern.length());
+        return i - pattern.length();
       }
     }
-    System.out.println("Not found");
     return -1;
   }
   
@@ -106,8 +104,7 @@ public class Algorithm {
       if(pattern.charAt(j) == text.charAt(i)) {
         i--; j--;
         if(j == -1) {
-          System.out.println("Found at index " + (i + 1));
-          return (i+1);
+          return i + 1;
         }
       } else {
         if(b[j][text.charAt(i) - 'a'] != -1) {
@@ -118,7 +115,6 @@ public class Algorithm {
         j = pattern.length() - 1;
       }
     }
-    System.out.println("Not found");
     return -1;
   }
 }
