@@ -14,15 +14,17 @@ import twitter4j.*;
 public class Category {
   private ArrayList<String> keys;
   private String category;
-  private List<Status> tweets;
+  private ArrayList<Status> tweets;
   
   public Category() {
     keys = new ArrayList<String>();
     category = "lala";
+    tweets = new ArrayList<Status>();
   }
   public Category(String cat) {
     keys = new ArrayList<String>();
     category = cat;
+    tweets = new ArrayList<Status>();
   }
   public Category(String cat, ArrayList<String> keywords) {
     category = cat;
@@ -46,7 +48,7 @@ public class Category {
     return keys.size();
   }
   
-  public List<Status> getTweets() {
+  public ArrayList<Status> getTweets() {
     return tweets;
   }
   

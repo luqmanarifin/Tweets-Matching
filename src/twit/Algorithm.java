@@ -35,11 +35,11 @@ public class Algorithm {
       while(j > 0 && s.charAt(i) != s.charAt(j)) j = a[j - 1];
       if(s.charAt(i) == s.charAt(j)) a[i] = j + 1;
     }
-    System.out.print("Func : ");
-    for(int i = 0; i < n; i++) {
+    //System.out.print("Func : ");
+    /*for(int i = 0; i < n; i++) {
       System.out.print(a[i] + " ");
-    }
-    System.out.println();
+    }*/
+    //System.out.println();
     return a;
   }
   
