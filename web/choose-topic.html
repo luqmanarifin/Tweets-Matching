@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<hmtl>
+<head>
+<meta charset="utf-8">
+  <title>TwitterAku - Choose Topic</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-default" id="header" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">
+            <img src="img/logo-header.png" alt="Logo" style="height:35px">
+          </a>    
+        </li>
+        <li>
+          <a href="index.html">
+            <img src="img/header-home.png">
+          </a>
+        </li>
+        <li>
+          <a href="index.html#index-help">
+            <img src="img/header-help.png">
+          </a>
+        </li>
+        <li> 
+          <a href="index.html#index-about">
+            <img src="img/header-about.png">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Pilihan Topic -->
+  <div id="topic-choice">
+    <div class="radio">
+      <label>
+        <input id="policy-and-law" name="topic-choice" type="radio" checked>Policy and Law
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input id="entertainment" name="topic-choice" type="radio">Entertainment
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input id="travelling" name="topic-choice" type="radio">Travelling
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input id="technology" name="topic-choice" type="radio">Technology
+      </label>
+    </div>
+  </div>
+
+  <div id="choose-topic-button">
+    <button id="choose-topic-button" class="btn btn-default">
+      <img src="img/button-search.png">
+    </button>
+  </div>
+
+  <!-- Pilihan kategori dan keyword untuk Topic Policy and Law -->
+  <div class="category" id="category">
+    <form autocomplete="on">
+      <h1 id="category">
+        TOPIC: 
+      </h1><br>
+      <div class="form-group">
+        <label id="twitter-search-label" for="twitter-search">
+          Twitter Search
+        </label>
+        <input type="text" class="form-control" id="twitter-search" placeholder="Ex. #holiday" required>
+      </div>
+      <!-- Keyword 1 -->
+      <div class="form-group">
+        <label id="keyword1-label" for="keyword1">
+          <!-- Diisi melalui JavaScript -->
+        </label>
+        <input type="text" class="form-control" id="keyword1" placeholder="Ex. World Gas Emition">
+      </div>
+      <!-- Keyword 2 -->
+      <div class="form-group">
+        <label id="keyword2-label" for="keyword2">
+          <!-- Diisi melalui JavaScript -->
+        </label>
+        <input type="text" class="form-control" id="keyword2" placeholder="Ex. Presiden Jokowi">
+      </div>
+      <!-- Keyword 3 -->
+      <div class="form-group">
+        <label id="keyword3-label" for="keyword3">
+          <!-- Diisi melalui JavaScript -->
+        </label>
+        <input type="text" class="form-control" id="keyword3" placeholder="Ex. Bupati"><br>
+      </div>
+      <p class="help-block">
+        Keyword are case-sensitive, seperated by ",".
+      </p>
+    </form>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/script.js"></script>
+</body>
+</html>
