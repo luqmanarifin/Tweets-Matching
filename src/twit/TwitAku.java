@@ -19,36 +19,18 @@ public class TwitAku {
   private static ArrayList<Category> categories = new ArrayList<Category>();
   private static final int tweetCount = 5;
   
-  private static void init(String keyword1, String keyword2, String keyword3) {
+  private static void init(String[] keywords, String[] categoryNames) {
     /* Parsing */
-    String[] key1 = keyword1.split(delimiter);
-    String[] key2 = keyword2.split(delimiter);
-    String[] key3 = keyword3.split(delimiter);
-    
-    /* TOPIK SPORT */
-    
-    categories.add(new Category("bola"));
-    categories.add(new Category("motogp"));
-    categories.add(new Category("table tennis"));
-    categories.add(new Category("unknown"));
-    
-    /* Menambah keyword untuk kategori 1 */
-    for (int j = 0; j < key1.length; j++) {
-      categories.get(0).addKey(key1[j]);
+    for(int i = 0; i < categoryNames.length; i++) {
+      String[] keys = new String[0];
+      if(i < keywords.length) {
+        keys = keywords[i].split(delimiter);
+      }
+      categories.add(new Category(categoryNames[i]));
+      for(int j = 0; j < keys.length; j++) {
+        categories.get(i).addKey(keys[j]);
+      }
     }
-
-    /* Menambah keyword untuk kategori 2 */
-    for (int j = 0; j < key1.length; j++) {
-      categories.get(1).addKey(key2[j]);
-    }
-
-    /* Menambah keyword untuk kategori 3 */
-    for (int j = 0; j < key1.length; j++) {
-      categories.get(2).addKey(key3[j]);
-    }
-     
-    
-    
   }
   
   /**
@@ -57,12 +39,21 @@ public class TwitAku {
   public static void main(String[] args) {
     // TODO code application logic here
     
+    // keywords dan knama kategori yang perlu ditambah
+    // masukin ke sini.
+    String[] keywords = {
+      "wednesday,cinta,nak,hey,cinta,mama",
+      "name,papa,berandal",
+      "world,morning"
+    };
+    String[] kategori = {
+      "bola",
+      "motogp",
+      "table tennis",
+      "unknown"
+    };
     
-    String keyword1 = "your";
-    String keyword2 = "name";
-    String keyword3 = "world";
-    
-    init(keyword1, keyword2, keyword3);
+    init(keywords, kategori);
     
     
     /*String text = "abacaabaccabacabaa";
@@ -92,27 +83,14 @@ public class TwitAku {
     for (int k = 0; k < tweetCount; k++) {
       boolean found = false;
       for (int i = 0; i < categories.size()-1; i++) {
+        if(found) break;
         for (int j = 0; j < categories.get(i).getKeysSize(); j++) {
+          if(found) break;
           int ind = solver.matchKmp(categories.get(i).getKey(j), tweets.get(k).getText());
           
           if (ind != -1) {
-            if (tweetCategory.isEmpty()) {
-              tweetCategory.add(i+1);
-              index.add(ind);
-            } else {
-                if ((tweetCategory.size() - 1) < k) {
-                  tweetCategory.add(i+1);
-                  index.add(ind);
-                }
-                else {
-                  if (ind < index.get(index.size()-1)) {
-                    tweetCategory.remove(tweetCategory.size()-1);
-                    index.remove(index.size()-1);
-                    index.add(ind);
-                    tweetCategory.add(i+1);
-                  } 
-                }
-            }
+            tweetCategory.add(i+1);
+            index.add(ind);
             found = true;
             break;
           }
@@ -148,6 +126,7 @@ public class TwitAku {
         String url = "https://twitter.com/" + l.get(j).getUser().getScreenName() + "/status/" + l.get(j).getId();
         System.out.println(url);
       }
+      System.out.println("\n");
     }
   }
   
